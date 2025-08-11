@@ -1,0 +1,122 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+}
+
+.bg-slideshow {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* lower */
+  top: 0;
+  left: 0;
+}
+
+.bg-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  animation: fade 27s infinite;
+}
+
+.bg-slide:nth-child(1) { animation-delay: 0s; }
+.bg-slide:nth-child(2) { animation-delay: 3s; }
+.bg-slide:nth-child(3) { animation-delay: 6s; }
+.bg-slide:nth-child(4) { animation-delay: 9s; }
+.bg-slide:nth-child(5) { animation-delay: 12s; }
+.bg-slide:nth-child(6) { animation-delay: 15s; }
+.bg-slide:nth-child(7) { animation-delay: 18s; }
+.bg-slide:nth-child(8) { animation-delay: 21s; }
+.bg-slide:nth-child(9) { animation-delay: 24s; }
+.bg-slide:nth-child(10) { animation-delay: 27s; }
+
+@keyframes fade {
+  0% { opacity: 0; }
+  5%, 15%, 20% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* Make sure nav and inputs are above the background */
+nav,
+.content,
+.content2,
+input,
+button,
+form,
+#home-map,
+#map {
+  position: relative;
+  z-index: 2; /* Above background */
+}
+
+nav.navbar {
+  z-index: 3;
+  position: relative;
+}
+
+nav {
+  background-color: #333;
+  padding: 100px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  margin: 0 15px;
+  text-decoration: none;
+}
+
+nav a.active {
+  text-decoration: underline;
+}
+
+#home-map {
+  margin: 20px auto;
+  max-width: 90%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+#home-map .leaflet-container {
+  height: 500px;
+  width: 100%;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  text-shadow: 2px 2px 6px #000;
+  padding-top: 5%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.content2 {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding-top: 2%;
+  text-shadow: 2px 2px 6px #000;
+  font-size: 100%;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.history,
+.about {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  padding-top: 5%;
+  text-shadow: 2px 2px 6px #000;
+  font-size: x-large;
+}
