@@ -131,11 +131,11 @@ function initMapWithTracking() {
 // ----------- NOTIFICATIONS -----------
 
 function checkNotifications(distance) {
-    if (distance < 0.1 && !notified["arrived"]) {
+    if (distance < 0.3 && !notified["arrived"]) {
         notify("📍 You've arrived!");
         saveTripHistory(sessionStorage.getItem("destination"), distance);
         notified["arrived"] = true;
-    } else if (distance < 0.5 && !notified["500m"]) {
+    } else if (distance < 0.75 && !notified["500m"]) {
         notify("500m remaining");
         notified["500m"] = true;
     } else if (distance < 1 && !notified["1km"]) {
