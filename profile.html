@@ -2,34 +2,16 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>GPS Alarm Web App</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Bootstrap -->
+    <title>User Profile - GPS Alarm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Leaflet -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-    <!-- Leaflet Routing -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
-    />
-    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
-
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="index.html">GPS Alarm</a>
@@ -47,7 +29,7 @@
         >
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
+              <a class="nav-link" href="index.html">Home</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="search-history.html">Search History</a>
@@ -56,14 +38,13 @@
               <a class="nav-link" href="about.html">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="login.html" id="loginNavLink">Log In</a>
+              <a class="nav-link active" href="profile.html">Profile</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Background Slideshow -->
     <div class="bg-slideshow">
       <div
         class="bg-slide"
@@ -103,45 +84,52 @@
       ></div>
     </div>
 
-    <!-- Main Content -->
     <main>
-      <div class="content text-center text-white position-relative">
-        <h1
-          style="
-            font-size: 100px;
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            text-shadow: 10px 10px 10px #000;
-          "
-        >
-          GPS Alarm Web App
-        </h1>
-        <p style="text-shadow: 2px 2px 2px #000; font-size: 20px">
-          Enter your destination to begin...
+      <section class="profile-card shadow-lg" aria-label="User Profile">
+        <div class="avatar" id="avatar" aria-hidden="true">👤</div>
+        <h1 class="username" id="usernameDisplay" tabindex="0">User Name</h1>
+        <p class="user-email" id="userEmailDisplay" tabindex="0">
+          user@example.com
         </p>
-        <input
-          type="text"
-          id="destinationInput"
-          class="form-control mb-3 w-50 mx-auto"
-          placeholder="University of Moratuwa"
-        />
-        <div id="suggestions" class="suggestions-box"></div>
-
-        <button id="startBtn" class="btn btn-light">Get Started</button>
-      </div>
-
-      <!-- Map -->
-      <div
-        id="home-map"
-        style="height: 300px; width: 700px; margin: 20px auto"
-      ></div>
-
-      <!-- Audio -->
-      <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
-      
+        <button
+          class="btn btn-danger btn-logout"
+          id="logoutBtn"
+          aria-label="Log out"
+        >
+          Log Out
+        </button>
+      </section>
     </main>
+
     <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
 
-    <script src="script.js"></script>
+    <!-- Bootstrap Bundle JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function logout() {
+        sessionStorage.removeItem("loggedInUser");
+        window.location.href = "login.html";
+      }
+
+      document.addEventListener("DOMContentLoaded", () => {
+        const usernameDisplay = document.getElementById("usernameDisplay");
+        const userEmailDisplay = document.getElementById("userEmailDisplay");
+        const avatar = document.getElementById("avatar");
+        const logoutBtn = document.getElementById("logoutBtn");
+
+        const loggedInUser = sessionStorage.getItem("loggedInUser");
+        if (!loggedInUser) {
+          window.location.href = "login.html";
+          return;
+        }
+
+        usernameDisplay.textContent = loggedInUser;
+        avatar.textContent = loggedInUser.charAt(0).toUpperCase();
+        userEmailDisplay.textContent = `${loggedInUser.toLowerCase()}@example.com`;
+
+        logoutBtn.addEventListener("click", logout);
+      });
+    </script>
   </body>
 </html>

@@ -1,94 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Login - GPS Alarm</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">GPS Alarm</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="history.html">Trips</a></li>
-          <li class="nav-item"><a class="nav-link" href="search-history.html">Search History</a></li>
-          <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-          <li class="nav-item"><a class="nav-link active" href="login.html">Log In</a></li>
-        </ul>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login - GPS Alarm</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="index.html">GPS Alarm</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div
+          class="collapse navbar-collapse justify-content-end"
+          id="navbarNav"
+        >
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="search-history.html">Search History</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="login.html" id="loginNavLink"
+                >Log In</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
+    </nav>
+
+    <main>
+      <div
+        class="container"
+        style="max-width: 400px; margin-top: 80px; padding-top: 6%"
+      >
+        <form
+          id="loginForm"
+          style="
+            background-color: #403e3e;
+            border: 2px #fff solid;
+            padding: 20px;
+            box-sizing: border-box;
+          "
+        >
+          <h1 class="content">LogIn Form</h1>
+          <div class="mb-3">
+            <label
+              for="username"
+              class="form-label"
+              style="
+                font-size: 25px;
+                font-family: 'Times New Roman', Times, serif;
+                color: white;
+                text-shadow: 2px 2px 6px #000;
+              "
+              >Username:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="Enter username"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label
+              for="password"
+              class="form-label"
+              style="
+                font-size: 25px;
+                font-family: 'Times New Roman', Times, serif;
+                color: white;
+                text-shadow: 2px 2px 6px #000;
+              "
+              >Password:</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Enter password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+      </div>
+    </main>
+
+    <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
+
+    <div class="bg-slideshow">
+      <div
+        class="bg-slide"
+        style="background-image: url('images/galle3.jpeg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/colombo.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/jaffna.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/sigiriya.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/ella.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/Nuwara_Eliya.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/sea.jpeg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/kandy.jpg')"
+      ></div>
+      <div
+        class="bg-slide"
+        style="background-image: url('images/yala.jpg')"
+      ></div>
     </div>
-  </nav>
 
-  <!-- Background Slideshow -->
-  
+    <script src="script.js"></script>
 
-  <div class="container" style="max-width: 400px; margin-top: 80px;padding-top: 6%;">
-    <form id="loginForm" style="background-color:#403e3e; border: 2px #FFF solid;padding: 20px; box-sizing: border-box;">
-      <h1 class="content"> LogIn Form </h1>
-      <div class="mb-3">
-        <label for="username" class="form-label" style="font-size: 25px; font-family: 'Times New Roman', Times, serif; color:white; text-shadow: 2px 2px 6px #000;">Username:</label>
-        <input
-          type="text"
-          class="form-control"
-          id="username"
-          placeholder="Enter username"
-          required
-        />
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label" style="font-size: 25px;font-family: 'Times New Roman', Times, serif;  color:white; text-shadow: 2px 2px 6px #000;">Password:</label>
-        <input
-          type="password"
-          class="form-control"
-          id="password"
-          placeholder="Enter password"
-          required
-        />
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Login</button>
-    </form>
-  </div>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-  <div class="bg-slideshow">
-    <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
-    <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
-    <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
-    <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
-  </div>
+          const username = document.getElementById("username").value.trim();
+          const password = document.getElementById("password").value.trim();
 
-  <script src="script.js"></script>
-
-  <script>
-    document.getElementById("loginForm").addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const username = document.getElementById("username").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      // Simple static check, replace with real auth if needed
-      if (username === "user" && password === "password") {
-        sessionStorage.setItem("loggedInUser", username);
-        alert("Login successful!");
-        window.location.href = "index.html"; // redirect after login
-      } else {
-        alert("Invalid username or password.");
-      }
-    });
-  </script>
-</body>
+          // Simple static check, replace with real auth if needed
+          if (username === "user" && password === "password") {
+            sessionStorage.setItem("loggedInUser", username);
+            alert("Login successful!");
+            window.location.href = "profile.html"; // redirect after login
+          } else {
+            alert("Invalid username or password.");
+          }
+        });
+    </script>
+  </body>
 </html>

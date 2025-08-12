@@ -5,6 +5,46 @@ let notified = {};
 document.addEventListener("DOMContentLoaded", () => {
     const input = document.getElementById("destinationInput");
     const button = document.getElementById("startBtn");
+    const suggestionsBox = document.getElementById("suggestions");
+
+    if (input && suggestionsBox) {
+        input.addEventListener("input", function () {
+            const query = this.value.trim();
+
+            if (query.length < 3) {
+                suggestionsBox.style.display = "none";
+                return;
+            }
+
+            fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=5&q=${encodeURIComponent(query)}`)
+                .then(res => res.json())
+                .then(data => {
+                    suggestionsBox.innerHTML = "";
+                    if (data.length > 0) {
+                        data.forEach(place => {
+                            const div = document.createElement("div");
+                            div.textContent = place.display_name;
+                            div.addEventListener("click", () => { input.value = place.display_name; suggestionsBox.style.display = "none"; });
+                            suggestionsBox.appendChild(div);
+                        });
+                        suggestionsBox.style.display = "block";
+                    }
+                    else {
+                        suggestionsBox.style.display = "none";
+                    }
+                })
+                .catch(err => {
+                    console.error("Suggestion fetch error:", err);
+                });
+        });
+
+        // Hide suggestions when clicking outside
+        document.addEventListener("click", (e) => {
+            if (e.target !== input) {
+                suggestionsBox.style.display = "none";
+            }
+        });
+    }
 
     // Handle destination input on home page with search history saving
     if (input && button) {
@@ -222,3 +262,24 @@ function loadTripHistory() {
         list.appendChild(item);
     });
 }
+
+// ----------- Change Log_In to Profile -----------
+
+document.addEventListener("DOMContentLoaded", () => {
+    const loginLink = document.getElementById("loginNavLink");
+    if (!loginLink) return;
+
+    const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+    if (loggedInUser) {
+        loginLink.textContent = "Profile";
+        loginLink.href = "profile.html"; // or your profile page url
+
+        // Optional: show username beside link or as tooltip
+        loginLink.title = `Logged in as ${loggedInUser}`;
+    } else {
+        loginLink.textContent = "Log In";
+        loginLink.href = "login.html";
+    }
+});
+
