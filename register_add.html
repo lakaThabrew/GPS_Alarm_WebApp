@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+
+    <link rel="stylesheet" href="new_style.css" />
+  </head>
+
+  <body>
+    <nav>
+      <div class="nav-container">
+        <a href="index.html" class="logo">GPS Alarm</a>
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="search-history.html">Search History</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="login.html" class="active">Log In</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="main-content">
+      <div class="register-container">
+        <h2>Join GPS Alarm</h2>
+
+        <div id="successMessage" class="success-message"></div>
+        <div id="errorMessage" class="error-message"></div>
+
+        <form id="registerForm">
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email" required/>
+          </div>
+
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="Choose a username" required minlength="3"/>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password" placeholder="Create a strong password" required minlength="6"/>
+              <div class="strength-indicator">
+                <div class="strength-bar-container">
+                  <div id="strengthBar" class="strength-bar"></div>
+                </div>
+                <div id="strengthText" class="strength-text"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Confirm Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm your password" required/>
+          </div>
+
+          <div class="checkbox-group">
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" required />
+            <label for="agreeTerms">I agree to the Terms of Service and Privacy Policy</label>
+          </div>
+
+          <button type="submit" class="register-btn" id="registerBtn">
+            Create Account
+          </button>
+        </form>
+
+        <div class="login-link">
+          Already have an account? <a href="login.html">Sign In</a>
+        </div>
+
+        <div class="summary" id="summaryDiv">
+          <div id="redirectCounter" class="redirect-counter"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-slideshow">
+      <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
+    </div>
+
+    <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
+
+    <script>
+      const registerForm = document.getElementById("registerForm");
+      const passwordInput = document.getElementById("password");
+      const confirmPasswordInput = document.getElementById("confirmPassword");
+      const strengthBar = document.getElementById("strengthBar");
+      const strengthText = document.getElementById("strengthText");
+      const successMessage = document.getElementById("successMessage");
+      const errorMessage = document.getElementById("errorMessage");
+      const registerBtn = document.getElementById("registerBtn");
+      const summaryDiv = document.getElementById("summaryDiv");
+      const redirectCounter = document.getElementById("redirectCounter");
+
+      // Password strength checker
+      passwordInput.addEventListener("input", checkPasswordStrength);
+      confirmPasswordInput.addEventListener("input", validatePasswordMatch);
+
+      function checkPasswordStrength() {
+        const password = passwordInput.value;
+        let score = 0;
+        let feedback = "";
+
+        // Reset
+        strengthBar.style.width = "0%";
+        strengthBar.className = "strength-bar";
+
+        if (password.length === 0) {
+          strengthText.textContent = "";
+          return;
+        }
+
+        // Check various criteria
+        if (password.length >= 8) score++;
+        if (password.length >= 12) score++;
+        if (/[a-z]/.test(password)) score++;
+        if (/[A-Z]/.test(password)) score++;
+        if (/[0-9]/.test(password)) score++;
+        if (/[^A-Za-z0-9]/.test(password)) score++;
+
+        // Determine strength
+        if (score < 3) {
+          strengthBar.style.width = "33%";
+          strengthBar.classList.add("weak");
+          strengthText.textContent = "Weak";
+          strengthText.className = "strength-text weak";
+        } else if (score < 5) {
+          strengthBar.style.width = "66%";
+          strengthBar.classList.add("medium");
+          strengthText.textContent = "Medium";
+          strengthText.className = "strength-text medium";
+        } else {
+          strengthBar.style.width = "100%";
+          strengthBar.classList.add("strong");
+          strengthText.textContent = "Strong";
+          strengthText.className = "strength-text strong";
+        }
+      }
+
+      function validatePasswordMatch() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+
+        if (confirmPassword && password !== confirmPassword) {
+          confirmPasswordInput.setCustomValidity("Passwords do not match");
+        } else {
+          confirmPasswordInput.setCustomValidity("");
+        }
+      }
+
+      // Countdown function
+      function startRedirectCountdown() {
+        let countdown = 5; // 5 seconds countdown
+        redirectCounter.innerHTML = `Redirecting to login in ${countdown} seconds...`;
+
+        const interval = setInterval(() => {
+          countdown--;
+          redirectCounter.innerHTML = `Redirecting to login in ${countdown} seconds...`;
+
+          if (countdown <= 0) {
+            clearInterval(interval);
+            // For demo purposes, we'll show an alert instead of redirecting
+            alert("Would redirect to login.html now!");
+            window.location.href = "login.html";
+          }
+        }, 1000);
+      }
+
+      // Form submission
+      registerForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Hide previous messages
+        successMessage.style.display = "none";
+        errorMessage.style.display = "none";
+        summaryDiv.style.display = "none";
+
+        // Get form data
+        const formData = new FormData(registerForm);
+        const userData = {
+          fullName: formData.get("fullName"),
+          email: formData.get("email"),
+          username: formData.get("username"),
+          password: formData.get("password"),
+          confirmPassword: formData.get("confirmPassword"),
+        };
+
+        // Basic validation
+        if (userData.password !== userData.confirmPassword) {
+          showError("Passwords do not match!");
+          return;
+        }
+
+        if (userData.password.length < 6) {
+          showError("Password must be at least 6 characters long!");
+          return;
+        }
+
+        // Simulate registration process
+        registerBtn.disabled = true;
+        registerBtn.textContent = "Creating Account...";
+
+        // In a real app, you would send this to your backend
+        setTimeout(() => {
+          // Simulate successful registration
+          const users = JSON.parse(
+            window.localStorage?.getItem("gpsAlarmUsers") || "[]"
+          );
+
+          // Check if user already exists
+          if (
+            users.find(
+              (user) =>
+                user.email === userData.email ||
+                user.username === userData.username
+            )
+          ) {
+            showError("User with this email or username already exists!");
+            registerBtn.disabled = false;
+            registerBtn.textContent = "Create Account";
+            return;
+          }
+
+          // Add new user
+          const newUser = {
+            id: Date.now(),
+            fullName: userData.fullName,
+            email: userData.email,
+            username: userData.username,
+            password: userData.password, // In real app, this should be hashed
+            createdAt: new Date().toISOString(),
+            trips: [],
+          };
+
+          users.push(newUser);
+          if (window.localStorage) {
+            window.localStorage.setItem("gpsAlarmUsers", JSON.stringify(users));
+          }
+
+          // Show success message
+          showSuccess("Account created successfully!");
+
+          // Show summary
+          summaryDiv.innerHTML = `
+          <h3>Registration Summary:</h3>
+          <p><strong>Name:</strong> ${userData.fullName}</p>
+          <p><strong>Email:</strong> ${userData.email}</p>
+          <p><strong>Username:</strong> ${userData.username}</p>
+          <p><strong>Password Strength:</strong> ${strengthText.textContent}</p>
+          <p><strong>Agreed to Terms:</strong> Yes</p>
+          <div id="redirectCounter" class="redirect-counter"></div>
+        `;
+
+          summaryDiv.style.display = "block"; // Fixed: Show the summary
+
+          // Start countdown and redirect
+          startRedirectCountdown();
+        }, 2000); // Reduced from 15 seconds to 2 seconds for better UX
+      });
+
+      function showSuccess(message) {
+        successMessage.textContent = message;
+        successMessage.style.display = "block";
+        successMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
+
+      function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = "block";
+        errorMessage.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        registerBtn.disabled = false;
+        registerBtn.textContent = "Create Account";
+      }
+
+      // Real-time validation
+      registerForm.addEventListener("input", function () {
+        const isValid = registerForm.checkValidity();
+        registerBtn.disabled = !isValid;
+      });
+    </script>
+  </body>
+</html>

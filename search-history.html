@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <title>Search History - GPS Alarm</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,122 +8,74 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">GPS Alarm</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="search-history.html"
-                >Search History</a
-              >
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html" id="loginNavLink">Log In</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel=" stylesheet" href = "new_style.css">
+</head>
+
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">GPS Alarm</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search_history.html" class="active">Search History</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html" id="loginNavLink">Log In</a></li>
+      </ul>
+    </div>
+  </nav>
 
     <div class="bg-slideshow">
-      <div
-        class="bg-slide"
-        style="background-image: url('images/galle3.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/colombo.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/jaffna.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sigiriya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/ella.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/Nuwara_Eliya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sea.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/kandy.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/yala.jpg')"
-      ></div>
+      <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
     </div>
-    <main>
-      <div class="content" style="padding-top: 5%">
-        <h1
-          style="
-            font-family: Impact, Haettenschweiler, 'Arial Narrow Bold',
-              sans-serif;
-            color: white;
-            text-shadow: 2px 2px 6px #000;
-          ">
-          Your Search History
-        </h1>
-        <ol id="searchHistoryList" class="list-group w-50 mx-auto mt-4"></ol>
+
+    <div class="main-content">
+      <div class="hero-section">
+        <h1 class="hero-title"><i class="fas fa-clock-rotate-left"></i> Your Search History</h1>
+        
+        <div class="history-container">
+          <div class="search-stats" id="searchStats">
+            <div class="stat-item">
+              <span class="stat-number" id="totalSearches">0</span>
+              <span class="stat-label">Total Searches</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="todaySearches">0</span>
+              <span class="stat-label">Today</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" id="uniqueSearches">0</span>
+              <span class="stat-label">Unique Places</span>
+            </div>
+          </div>
+
+          <div class="control-panel">
+            <div class="search-filter">
+              <i class="fas fa-search"></i>
+              <input type="text" class="filter-input" id="searchFilter" placeholder="Filter search history...">
+            </div>
+            <button class="clear-btn" id="clearHistoryBtn">
+              <i class="fas fa-trash"></i> Clear All History
+            </button>
+          </div>
+
+          <div id="searchHistoryList"></div>
+        </div>
       </div>
-    </main>
+    </div>
 
     <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const list = document.getElementById("searchHistoryList");
-        const history = JSON.parse(localStorage.getItem("searchHistory")) || [];
+    <script src = "new.js"></script>
 
-        if (history.length === 0) {
-          list.innerHTML = "<li class='list-group-item'>No searches yet.</li>";
-          return;
-        }
-
-        // Reverse order: most recent first
-        history
-          .slice()
-          .reverse()
-          .forEach((item) => {
-            const li = document.createElement("li");
-            li.className = "list-group-item";
-            li.textContent = item;
-            list.appendChild(li);
-          });
-      });
-    </script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  </body>
+    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>-->
+</body>
 </html>

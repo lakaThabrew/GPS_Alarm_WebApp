@@ -1,172 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Login - GPS Alarm</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">GPS Alarm</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="search-history.html">Search History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="login.html" id="loginNavLink"
-                >Log In</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 
-    <main>
-      <div
-        class="container"
-        style="max-width: 400px; margin-top: 80px; padding-top: 6%"
-      >
-        <form
-          id="loginForm"
-          style="
-            background-color: #403e3e;
-            border: 2px #fff solid;
-            padding: 20px;
-            box-sizing: border-box;
-          "
-        >
-          <h1 class="content">LogIn Form</h1>
-          <div class="mb-3">
-            <label
-              for="username"
-              class="form-label"
-              style="
-                font-size: 25px;
-                font-family: 'Times New Roman', Times, serif;
-                color: white;
-                text-shadow: 2px 2px 6px #000;
-              "
-              >Username:</label
-            >
-            <input
-              type="text"
-              class="form-control"
-              id="username"
-              placeholder="Enter username"
-              required
-            />
-          </div>
-          <div class="mb-3">
-            <label
-              for="password"
-              class="form-label"
-              style="
-                font-size: 25px;
-                font-family: 'Times New Roman', Times, serif;
-                color: white;
-                text-shadow: 2px 2px 6px #000;
-              "
-              >Password:</label
-            >
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-              placeholder="Enter password"
-              required
-            />
-          </div>
-          <button type="submit" class="btn btn-primary w-100">Login</button>
-        </form>
-      </div>
-    </main>
+  <link rel="stylesheet" href="new_style.css" />
+</head>
 
-    <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
-
-    <div class="bg-slideshow">
-      <div
-        class="bg-slide"
-        style="background-image: url('images/galle3.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/colombo.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/jaffna.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sigiriya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/ella.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/Nuwara_Eliya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sea.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/kandy.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/yala.jpg')"
-      ></div>
+<body>
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">GPS Alarm</a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search-history.html">Search History</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html" class="active">Log In</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <script src="script.js"></script>
+  <div class="main-content">
+    <div class="login-container">
+      <h1>Welcome Back</h1>
+      
+      <div id="successMessage" class="success-message"></div>
+      <div id="errorMessage" class="error-message"></div>
+      
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="username">Username or Email</label>
+          <input type="text" id="username" name="username" placeholder="Enter your username or email" required>
+        </div>
 
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", function (e) {
-          e.preventDefault();
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Enter your password" required>
+        </div>
 
-          const username = document.getElementById("username").value.trim();
-          const password = document.getElementById("password").value.trim();
+        <button type="submit" class="login-btn" id="loginBtn">
+          <div class="btn-content">
+            <div class="spinner" id="spinner"></div>
+            <span id="btnText">Sign In</span>
+          </div>
+        </button>
+      </form>
 
-          // Simple static check, replace with real auth if needed
-          if (username === "user" && password === "password") {
-            sessionStorage.setItem("loggedInUser", username);
-            alert("Login successful!");
-            window.location.href = "profile.html"; // redirect after login
-          } else {
-            alert("Invalid username or password.");
-          }
-        });
-    </script>
-  </body>
+      <div class="forgot-password">
+        <a href="#" onclick="alert('Password reset feature coming soon!')">Forgot Password?</a>
+      </div>
+
+      <div class="register-link">
+        Don't have an account? <a href="register_add.html">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-slideshow">
+      <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
+  </div>
+
+  <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
+
+  <script>
+    // DOM Elements
+    const loginForm = document.getElementById('loginForm');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    const loginBtn = document.getElementById('loginBtn');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    // Form submission handler
+    loginForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Hide previous messages
+      successMessage.style.display = 'none';
+      errorMessage.style.display = 'none';
+
+      const username = usernameInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!username || !password) {
+        showError('Please fill in all fields');
+        return;
+      }
+
+      // Show loading state
+      loginBtn.disabled = true;
+      spinner.style.display = 'block';
+      btnText.textContent = 'Signing In...';
+
+      // Simulate login process
+      setTimeout(() => {
+        authenticateUser(username, password);
+      }, 1500);
+    });
+
+    function authenticateUser(username, password) {
+      // Get registered users from localStorage
+      const users = JSON.parse(window.localStorage?.getItem('gpsAlarmUsers') || '[]');
+      
+      // Check for default admin account
+      if ((username === 'admin' || username === 'user') && password === 'password') {
+        loginSuccess('admin', 'Administrator');
+        return;
+      }
+
+      // Find user by username or email
+      const user = users.find(u => 
+        (u.username === username || u.email === username) && u.password === password
+      );
+
+      if (user) {
+        loginSuccess(user.username, user.fullName);
+      } else {
+        loginFailure('Invalid username/email or password');
+      }
+    }
+
+    function loginSuccess(username, fullName) {
+      const sessionData = {
+        username: username,
+        fullName: fullName,
+        loginTime: new Date().toISOString()
+      };
+      
+      if (window.sessionStorage) {
+        window.sessionStorage.setItem('loggedInUser', JSON.stringify(sessionData));
+      }
+
+      showSuccess(`Welcome back, ${fullName}!`);
+      
+      // Redirect after success message
+      setTimeout(() => {
+        // For demo purposes, show alert instead of redirect
+        alert(`Login successful! Would redirect to profile.html now.`);
+        window.location.href = 'profile.html';
+        
+        // Reset form for demo
+        resetForm();
+      }, 2000);
+    }
+
+    function loginFailure(message) {
+      showError(message);
+      resetForm();
+    }
+
+    function showSuccess(message) {
+      successMessage.textContent = message;
+      successMessage.style.display = 'block';
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+      errorMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function resetForm() {
+      loginBtn.disabled = false;
+      spinner.style.display = 'none';
+      btnText.textContent = 'Sign In';
+    }
+
+    // Real-time validation
+    [usernameInput, passwordInput].forEach(input => {
+      input.addEventListener('input', function() {
+        // Hide error messages when user starts typing
+        if (errorMessage.style.display === 'block') {
+          errorMessage.style.display = 'none';
+        }
+      });
+    });
+
+    // Check if user came from registration
+    window.addEventListener('DOMContentLoaded', function() {
+      // Check URL parameters for registration success
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('registered') === 'true') {
+        showSuccess('Registration successful! Please log in with your credentials.');
+      }
+    });
+
+    // Demo user info display (remove in production)
+    console.log('Demo Login Credentials:');
+    console.log('Username: admin, Password: password');
+    console.log('Username: user, Password: password');
+    console.log('Or use any credentials you registered with');
+  </script>
+</body>
 </html>

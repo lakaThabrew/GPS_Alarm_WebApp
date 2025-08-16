@@ -9,342 +9,93 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="new_style.css" />
 
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #e0ecff;
-        color: #222;
-        flex-direction: column;
-        min-height: 100vh;
-      }
-      main {
-        flex: 1 0 auto;
-      }
-
-      .bg-slideshow {
-        position: relative;
-        width: 100%;
-        height: 500px;
-        overflow: hidden;
-      }
-
-      .bg-slide {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background-position: center center;
-        background-size: cover;
-        opacity: 0;
-        animation: slideAnimation 24s infinite;
-      }
-      .bg-slide:nth-child(1) {
-        animation-delay: 0s;
-      }
-      .bg-slide:nth-child(2) {
-        animation-delay: 3s;
-      }
-      .bg-slide:nth-child(3) {
-        animation-delay: 6s;
-      }
-      .bg-slide:nth-child(4) {
-        animation-delay: 9s;
-      }
-      .bg-slide:nth-child(5) {
-        animation-delay: 12s;
-      }
-      .bg-slide:nth-child(6) {
-        animation-delay: 15s;
-      }
-      .bg-slide:nth-child(7) {
-        animation-delay: 18s;
-      }
-      .bg-slide:nth-child(8) {
-        animation-delay: 21s;
-      }
-      .bg-slide:nth-child(9) {
-        animation-delay: 24s;
-      }
-      @keyframes slideAnimation {
-        0% {
-          opacity: 0;
-        }
-        5% {
-          opacity: 1;
-        }
-        15% {
-          opacity: 1;
-        }
-        20% {
-          opacity: 0;
-        }
-        100% {
-          opacity: 0;
-        }
-      }
-
-      .about-container {
-        max-width: 1500px;
-        margin: 40px auto;
-        background: white;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
-        display: flex;
-        gap: 40px;
-        align-items: flex-start;
-        flex-wrap: wrap;
-      }
-      .about-text {
-        flex: 1 1 350px;
-      }
-      .about-text h2 {
-        font-weight: 700;
-        font-size: 2.2rem;
-        color: #d36f8f;
-        margin-bottom: 16px;
-      }
-      .about-text p {
-        font-size: 1rem;
-        line-height: 1.6;
-        color: #555;
-        margin-bottom: 25px;
-      }
-      .btn-learn {
-        background: #6c63ff;
-        color: white;
-        font-weight: 600;
-        padding: 12px 30px;
-        border: none;
-        border-radius: 6px;
-        cursor: pointer;
-        font-size: 1rem;
-        transition: background 0.3s ease;
-        text-decoration: none;
-        display: inline-block;
-      }
-      .btn-learn:hover {
-        background: #5848c2;
-      }
-      .about-images {
-        flex: 1 1 400px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        justify-content: center;
-      }
-      .about-images img {
-        width: 250px;
-        height: 250px;
-        object-fit: cover;
-        border-radius: 12px;
-        box-shadow: 0 6px 15px rgb(0 0 0 / 0.1);
-        transition: transform 0.3s ease;
-      }
-      .about-images img:hover {
-        transform: scale(1.1);
-      }
-      .extra-info {
-        max-width: 1500px;
-        margin: 30px auto 60px auto;
-        background: white;
-        padding: 30px 40px;
-        border-radius: 12px;
-        box-shadow: 0 8px 24px rgb(0 0 0 / 0.1);
-        color: #444;
-      }
-      .extra-info h3 {
-        color: #d36f8f;
-        margin-bottom: 12px;
-        font-size: 2rem;
-      }
-      .extra-info p,
-      .extra-info ul {
-        font-size: 1.2rem;
-        line-height: 1.5;
-        margin-bottom: 20px;
-      }
-
-      footer {
-        flex-shrink: 0;
-        background: #1e1e1e;
-        color: #bbb;
-        text-align: center;
-        font-size: 0.9rem;
-        padding: 15px 0;
-        user-select: none;
-        position: relative;
-        z-index: 10;
-      }
-      .extra-info ul {
-        list-style-type: none;
-        padding-left: 0;
-      }
-      .extra-info li {
-        margin-bottom: 8px;
-      }
-      @media (max-width: 700px) {
-        .about-container {
-          flex-direction: column;
-          padding: 20px 25px;
-        }
-        .about-images {
-          justify-content: flex-start;
-        }
-        .extra-info {
-          padding: 20px 25px;
-          margin: 20px auto 40px auto;
-        }
-        .bg-slideshow {
-          height: 200px;
-        }
-      }
-    </style>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">GPS Alarm</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="search-history.html">Search History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html" id="loginNavLink">Log In</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">GPS Alarm</a>
+      <ul class="nav-links">
+        <li><a href="index.html" >Home</a></li>
+        <li><a href="search-history.html">Search History</a></li>
+        <li><a href="about.html" class="active">About Us</a></li>
+        <li><a href="login.html" id="loginNavLink">Log In</a></li>
+      </ul>
+    </div>
     </nav>
 
     <div class="bg-slideshow">
-      <div
-        class="bg-slide"
-        style="background-image: url('images/galle3.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/colombo.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/jaffna.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sigiriya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/ella.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/Nuwara_Eliya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sea.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/kandy.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/yala.jpg')"
-      ></div>
+      <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
     </div>
 
-    <main>
-      <div class="about-container">
-        <div class="about-text">
-          <h2>About Us</h2>
-          <p>
-            Our GPS-based alarm system triggers alerts based on your location, helping you stay safe and timely 
-            informed wherever you are. Designed with simplicity and reliability, our app connects your device to real-time
-             geographic zones, ensuring you never miss important notifications or safety boundaries. Whether you’re traveling,
-              commuting, or managing daily tasks, our system adapts seamlessly to your movements to provide personalized alerts 
-              tailored to your unique needs. With customizable settings and instant notifications, you can set up safe zones, receive 
-              reminders, or get alerted to potential hazards in your vicinity. Our commitment is to empower you with smart location-based 
-              technology that enhances your peace of mind and keeps you connected to what matters most—anytime, anywhere.
-          </p>
-          <a href="#" class="btn-learn">Learn More</a>
-        </div>
-        <div class="about-images">
-          <img
-            src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80"
-            alt="Team Image 1"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80"
-            alt="Team Image 2"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=400&q=80"
-            alt="Team Image 3"
-          />
-          <img
-            src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=400&q=80"
-            alt="Team Image 4"
-          />
-        </div>
-      </div>
-
-      <div class="extra-info">
-        <h3>Our Mission</h3>
+    <div class="about-container">
+      <div class="about-text">
+        <h2>About Us</h2>
         <p>
-          To provide a seamless, intuitive GPS-based alarm system that enhances
-          personal safety and timely awareness for users everywhere. We strive
-          to empower individuals with smart, location-based notifications that
-          adapt to their lifestyle and environment.
+          Our GPS-based alarm system triggers alerts based on your location,
+          helping you stay safe and timely informed wherever you are. Designed
+          with simplicity and reliability, our app connects your device to
+          real-time geographic zones, ensuring you never miss important
+          notifications or safety boundaries. Whether you’re traveling,
+          commuting, or managing daily tasks, our system adapts seamlessly to
+          your movements to provide personalized alerts tailored to your unique
+          needs. With customizable settings and instant notifications, you can
+          set up safe zones, receive reminders, or get alerted to potential
+          hazards in your vicinity. Our commitment is to empower you with smart
+          location-based technology that enhances your peace of mind and keeps
+          you connected to what matters most—anytime, anywhere.
         </p>
-
-        <h3>Contact Our Developers</h3>
-        <ul>
-          <li>
-            <strong>Lead Developer:</strong> Lakmana Thabrew —
-            lakmanathabrew123@gmail.com
-          </li>
-          <li>
-            <strong>Backend Engineer:</strong> Lakmana Thabrew —
-            lakmanathabrew123@gmail.com
-          </li>
-          <li>
-            <strong>UI/UX Designer:</strong> Lakmana Thabrew —
-            lakmanathabrew123@gmail.com
-          </li>
-          <li><strong>Support:</strong> support@gps_alarm.com</li>
-        </ul>
+        <a href="#" class="btn-learn">Learn More</a>
       </div>
-    </main>
+
+      <div class="about-images">
+        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Team Image 1"/>
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Team Image 2"/>
+        <img src="images/uom.jpg" alt="Team Image 3"/>
+        <img src="images/cse.jpeg" alt="Team Image 4"/>
+      </div>
+    </div>
+
+    <div class="extra-info">
+      <h3>Our Mission</h3>
+      <p>
+        To provide a seamless, intuitive GPS-based alarm system that enhances
+        personal safety and timely awareness for users everywhere. We strive to
+        empower individuals with smart, location-based notifications that adapt
+        to their lifestyle and environment.
+      </p>
+
+      <h3>Contact Our Developers</h3>
+      <ul>
+        <li>
+          <strong>Lead Developer:</strong> Lakmana Thabrew —
+          lakmanathabrew123@gmail.com
+        </li>
+        <li>
+          <strong>Backend Engineer:</strong> Lakmana Thabrew —
+          lakmanathabrew123@gmail.com
+        </li>
+        <li>
+          <strong>UI/UX Designer:</strong> Lakmana Thabrew —
+          lakmanathabrew123@gmail.com
+        </li>
+        <li><strong>Support:</strong> support@gps_alarm.com</li>
+      </ul>
+    </div>
 
     <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="new.js"></script>
   </body>
 </html>

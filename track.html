@@ -24,104 +24,46 @@
     />
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css" />
+    <link rel=" stylesheet" href = "new_style.css">
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="index.html">GPS Alarm</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div
-          class="collapse navbar-collapse justify-content-end"
-          id="navbarNav"
-        >
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link active" href="index.html">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="search-history.html">Search History</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="login.html" id="loginNavLink">Log In</a>
-            </li>
-          </ul>
-        </div>
-      </div>
+    <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">GPS Alarm</a>
+      <ul class="nav-links">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="search-history.html">Search History</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="login.html" id="loginNavLink">Log In</a></li>
+      </ul>
+    </div>
     </nav>
 
     <div class="bg-slideshow">
-      <div
-        class="bg-slide"
-        style="background-image: url('images/galle3.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/colombo.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/Anuradhapura.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/jaffna.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sigiriya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/ella.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/Nuwara_Eliya.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/sea.jpeg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/kandy.jpg')"
-      ></div>
-      <div
-        class="bg-slide"
-        style="background-image: url('images/yala.jpg')"
-      ></div>
+      <div class="bg-slide" style="background-image: url('images/galle3.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/colombo.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/jaffna.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sigiriya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/ella.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/Nuwara_Eliya.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/sea.jpeg')"></div>
+      <div class="bg-slide" style="background-image: url('images/kandy.jpg')"></div>
+      <div class="bg-slide" style="background-image: url('images/yala.jpg')"></div>
+   </div>
+
+   <div class = "hero-section">
+     <h1 class="hero-title"> Loading Destination..... </h1>
+   </div>
+
+  
+    <div class="map-container">
+      <div id="map"></div>
     </div>
 
-    <main>
-      <div
-        class="content2 text-center text-white position-relative"
-        style="z-index: 10; padding: 40px"
-      >
-        <h1 id="status">Loading destination...</h1>
-        <div
-          id="map"
-          style="height: 70vh; width: 90%; margin: auto; border-radius: 20px"
-        ></div>
-        <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
-      </div>
-    </main>
+    <audio id="alarmSound" src="alarm.mp3" preload="auto"></audio>
 
     <footer>&copy; 2025 GPS Alarm Web App. All rights reserved.</footer>
 
-    <!-- Your JavaScript Logic -->
-    <script src="script.js"></script>
+    <script src="new.js"></script>
   </body>
 </html>
