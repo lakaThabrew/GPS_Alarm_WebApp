@@ -3,7 +3,11 @@
 **🎥 Live Demo**: [GPS Alarm Web App](https://lakathabrew.github.io/GPS_Alarm_WebApp/)
 
 ---
+# Initial Home Page
 <center><img src="main-page.png" alt="Main Page" width="600" /></center>
+
+# Updated Home Page
+<center><img src="main_page-0816.png" alt="Main Page" width="600" /></center>
 
 ## 🔎 Overview
 
@@ -18,23 +22,25 @@ The **GPS Alarm WebApp** is a web-based reminder utility that helps you set loca
 - **Search History**: Easily revisit previous destinations via the "Search History" tab.
 - **User Accounts**: Log in to save, manage, and revisit your personalized trips.
 - **About Us**: Learn more about the app’s mission and development under the “About Us” page.
+- **Register**: Register for the site and experience additional.
 
 ---
 
 ## 🚩 Getting Started
 
 1. **Visit**: Go to [GPS Alarm Web App](https://lakathabrew.github.io/GPS_Alarm_WebApp/).
-2. **Enter Destination**: Type in the place and set your preferred alarm.
-3. **Track & Alert**: The app monitors your location and delivers the alert when you reach the target.
-4. **Manage Trips**: Navigate your “Trips” and “Search History” to revisit or modify past alerts.
-5. **Authentication**: Log in to access saved trips or create new ones.
+2. **Log IN**: Enter your username or email and password to Log In to your account.
+3. **Register**: If you have not registered yet, click sign-up to go to the Register Page.
+4. **Enter Destination**: Type in the place and set your preferred alarm.
+5. **Track & Alert**: The app monitors your location and delivers an alert when you reach the target.
+6. **Manage Trips**: Navigate your “Trips” and “Search History” to revisit or modify past alerts.
 
 ---
 
 ## 💡 Usage Tips
 
-- Ensure your browser or device permissions allow location tracking.
-- Refresh the page if location permissions were changed.
+- Ensure your browser or device permissions allow location tracking and send mobile notifications.
+- Refresh the page if location permissions and notification permissions were changed.
 - Save important trips with an account for easier future access.
 
 ---
@@ -44,6 +50,7 @@ The **GPS Alarm WebApp** is a web-based reminder utility that helps you set loca
 | Issue | Resolution |
 |-------|------------|
 | Alarm doesn’t trigger | Verify you granted location permissions and your browser supports geolocation. |
+| Notifications don't come | Verify you granted send notifications permissions |
 | Location tracking issues | Switch to a modern browser or check your device’s GPS settings. |
 | Login errors | Refresh the page or confirm your credentials are correct. |
 
