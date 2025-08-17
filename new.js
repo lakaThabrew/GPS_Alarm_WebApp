@@ -1737,7 +1737,7 @@ function logout() {
 
     document.addEventListener("DOMContentLoaded", () => {
         const usernameDisplay = document.getElementById("usernameDisplay");
-        const userEmailDisplay = document.getElementById("userEmailDisplay");
+        const userFullnameDisplay = document.getElementById("userFullnameDisplay");
         const avatar = document.getElementById("avatar");
         const logoutBtn = document.getElementById("logoutBtn");
 
@@ -1748,9 +1748,11 @@ function logout() {
           return;
         }
 
-        usernameDisplay.textContent = loggedInUser;
-        avatar.textContent = loggedInUser.charAt(0).toUpperCase();
-        userEmailDisplay.textContent = `${loggedInUser.toLowerCase()}@example.com`;
+        const userData = loggedInUser.trim();
+        const data = JSON.parse(userData);
+        usernameDisplay.textContent = data.username;
+        avatar.textContent = data.username.charAt(0).toUpperCase();
+        userFullnameDisplay.textContent = data.fullName;
 
         logoutBtn.addEventListener("click", logout);
     });
