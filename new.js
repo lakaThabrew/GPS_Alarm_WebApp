@@ -311,14 +311,23 @@ class NotificationSystem {
                 info: 'ℹ️'
             };
 
+        try 
+        {
             new Notification(`GPS Alarm ${icons[type] || icons.info}`, {
-                body: message,
-                icon: '/favicon.ico',
-                badge: '/favicon.ico',
-                tag: 'gps-alarm',
-                requireInteraction: type === 'success',
-                silent: false
-            });
+            body: message,
+            icon: '/favicon.ico',
+            badge: '/favicon.ico',
+            tag: 'gps-alarm',
+            requireInteraction: type === 'success',
+            silent: false
+                 });
+        } 
+        catch (e) 
+        {
+            console.warn("Native notifications are not supported in this browser:", e);
+            // fallback to in-app notification only
+        }
+
         }
     }
 
@@ -1750,7 +1759,10 @@ function logout() {
 
         const userData = loggedInUser.trim();
         const data = JSON.parse(userData);
-        usernameDisplay.textContent = data.username;
+        if (usernameDisplay) 
+        {
+            usernameDisplay.textContent = data.username;
+        }
         avatar.textContent = data.username.charAt(0).toUpperCase();
         userFullnameDisplay.textContent = data.fullName;
 
