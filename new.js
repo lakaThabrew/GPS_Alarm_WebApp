@@ -314,13 +314,13 @@ class NotificationSystem {
         try 
         {
             new Notification(`GPS Alarm ${icons[type] || icons.info}`, {
-            body: message,
-            icon: '/favicon.ico',
-            badge: '/favicon.ico',
-            tag: 'gps-alarm',
-            requireInteraction: type === 'success',
-            silent: false
-                 });
+                body: message,
+                icon: '/favicon.ico',
+                badge: '/favicon.ico',
+                tag: 'gps-alarm',
+                requireInteraction: type === 'success',
+                silent: false
+                    });
         } 
         catch (e) 
         {
@@ -332,16 +332,18 @@ class NotificationSystem {
     }
 
     vibrate(type) {
-        if ('navigator' in window && 'vibrate' in navigator) {
-            const patterns = {
-                success: [100, 50, 100],
-                warning: [200, 100, 200, 100, 200],
-                error: [300, 100, 300],
-                info: [100]
-            };
-            navigator.vibrate(patterns[type] || patterns.info);
-        }
+    if (document.hasFocus() && 'vibrate' in navigator) 
+    {
+        const patterns = {
+            success: [100, 50, 100],
+            warning: [200, 100, 200, 100, 200],
+            error: [300, 100, 300],
+            info: [100]
+        };
+        navigator.vibrate(patterns[type] || patterns.info);
     }
+}
+
 
     playNotificationSound() {
         try {
@@ -1750,23 +1752,15 @@ function logout() {
         const avatar = document.getElementById("avatar");
         const logoutBtn = document.getElementById("logoutBtn");
 
-        const loggedInUser = sessionStorage.getItem("loggedInUser");
-        if (!loggedInUser) 
-            {
-          window.location.href = "login.html";
-          return;
-        }
-
-        const userData = loggedInUser.trim();
-        const data = JSON.parse(userData);
-        if (usernameDisplay) 
+        if (loggedInUser && usernameDisplay && userFullnameDisplay && avatar && logoutBtn) 
         {
-            usernameDisplay.textContent = data.username;
-        }
+        const data = JSON.parse(loggedInUser.trim());
+        usernameDisplay.textContent = data.username;
         avatar.textContent = data.username.charAt(0).toUpperCase();
         userFullnameDisplay.textContent = data.fullName;
 
         logoutBtn.addEventListener("click", logout);
+}
     });
 
 
