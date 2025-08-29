@@ -214,7 +214,7 @@ class NotificationSystem {
         
         const colors = {
             success: { bg: '#d4edda', border: '#c3e6cb', text: '#155724', icon: '✓' },
-            error: { bg: '#f8d7da', border: '#f5c6cb', text: '#721c24', icon: '✗' },
+            error: { bg: '#f8d7da', border: '#f5c6cb', text: '#e21126ff', icon: '✗' },
             warning: { bg: '#fff3cd', border: '#ffeaa7', text: '#856404', icon: '⚠' },
             info: { bg: '#d1ecf1', border: '#bee5eb', text: '#0c5460', icon: 'ℹ' }
         };
@@ -1485,7 +1485,6 @@ class SearchHistoryManager {
                 this.clearAllHistory();
             });
         }
-
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey || e.metaKey) {
@@ -1744,24 +1743,35 @@ class App {
 function logout() {
     sessionStorage.removeItem("loggedInUser");
     window.location.href = "login.html";
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        const usernameDisplay = document.getElementById("usernameDisplay");
-        const userFullnameDisplay = document.getElementById("userFullnameDisplay");
-        const avatar = document.getElementById("avatar");
-        const logoutBtn = document.getElementById("logoutBtn");
-
-        if (loggedInUser && usernameDisplay && userFullnameDisplay && avatar && logoutBtn) 
-        {
-        const data = JSON.parse(loggedInUser.trim());
-        usernameDisplay.textContent = data.username;
-        avatar.textContent = data.username.charAt(0).toUpperCase();
-        userFullnameDisplay.textContent = data.fullName;
-
-        logoutBtn.addEventListener("click", logout);
 }
-    });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const usernameDisplay = document.getElementById("usernameDisplay");
+    const userFullnameDisplay = document.getElementById("userFullnameDisplay");
+    const avatar = document.getElementById("avatar");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Get the logged in user from session storage
+    const loggedInUser = sessionStorage.getItem("loggedInUser");
+
+    if (loggedInUser && usernameDisplay && userFullnameDisplay && avatar && logoutBtn) {
+        try {
+            const data = JSON.parse(loggedInUser.trim());
+            usernameDisplay.textContent = data.username;
+            avatar.textContent = data.username.charAt(0).toUpperCase();
+            userFullnameDisplay.textContent = data.fullName;
+
+            logoutBtn.addEventListener("click", logout);
+        } catch (error) {
+            console.error('Error parsing user data:', error);
+            // Redirect to login if user data is invalid
+            window.location.href = "login.html";
+        }
+    } else if (!loggedInUser) {
+        // No user logged in, redirect to login page
+        window.location.href = "login.html";
+    }
+});
 
 
 // =============================================================================
